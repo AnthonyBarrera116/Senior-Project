@@ -2,6 +2,11 @@ body {
     background-color:#000000;
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    background-size: cover;
+    height: 95vh;
 }
 a {
     color:#ffffff;
@@ -60,3 +65,37 @@ display: block;
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 /*.dropdown:hover .dropbtn {background-color: #3e8e41;}*/
+.login-box{
+
+    width: 382px;
+        overflow: hidden;
+        margin: auto;
+        margin: 20 0 0 450px;
+        padding: 80px;
+        background: #ffffff;
+        border-radius: 15px ;
+        margin-top: 500px;
+
+}
+
+
+h1{
+    font-size: 20px;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+}
+
+.hist-box{
+
+    width: 1000px;
+    height: 1000px;
+    overflow: hidden;
+    margin: auto;
+    margin: 20 0 0 450px;
+    padding: 80px;
+    background: #ffffff;
+    border-radius: 15px ;
+
+}
