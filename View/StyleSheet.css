@@ -7,6 +7,7 @@ body {
     background-position: center;
     background-size: cover;
     height: 95vh;
+    color:#ffffff;
 }
 a {
     color:#ffffff;
@@ -21,7 +22,7 @@ a:hover {
 }
 
 /* Dropdown Button */
-.dropbtn {
+.dropbtnNav {
 background-color: #a349a4;
 color: white;
 border: none;
@@ -30,17 +31,17 @@ font-family: 'Times New Roman', Times, serif;
 }
 
 /* The container <div> - needed to position the dropdown content */
-.dropdown {
+.dropdownNav {
 position: relative;
 display: inline-block;
 }
 
-.dropbtn:hover{
+.dropbtnNav:hover{
     font-weight:800;
 }
 
 /* Dropdown Content (Hidden by Default) */
-.dropdown-content {
+.dropdown-contentNav {
 display: none;
 position: absolute;
 background-color: #a349a4;
@@ -48,7 +49,7 @@ z-index: 1;
 }
 
 /* Links inside the dropdown */
-.dropdown-content a {
+.dropdown-contentNav a {
 color: #ffffff;
 font-size: 25px;
 text-decoration: none;
@@ -59,7 +60,7 @@ display: block;
 /*.dropdown-content a:hover {background-color: #ddd;}*/
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content{
+.dropdownNav:hover .dropdown-content{
     display: block;
 }
 
@@ -97,5 +98,69 @@ h1{
     padding: 80px;
     background: #ffffff;
     border-radius: 15px ;
+}
 
+/* Dropdown Button */
+.dropbtnForm {
+    background-color: #000000;
+    color: white;
+    border-style: solid;
+    border-color: #a349a4;
+    border-width: 5px;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    }
+    
+    /* The container <div> - needed to position the dropdown content */
+    .dropdownForm {
+    position: relative;
+    display: inline-block;
+    }
+    
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-contentForm {
+    display: none;
+    position: absolute;
+    background-color: #000000;
+    z-index: 1;
+    }
+    
+    /* Links inside the dropdown */
+    .dropdown-contentForm a {
+    color: #ffffff;
+    font-size: 25px;
+    text-decoration: none;
+    display: block;
+    }
+
+    .dropdownForm a:hover{
+        font-weight:0px!important;
+    }
+    
+    /* Change color of dropdown links on hover */
+    /*.dropdown-content a:hover {background-color: #ddd;}*/
+
+input::-webkit-outer-spin-button, /*Get rid of buttons on the number form*/
+input::-webkit-inner-spin-button {
+  display: none;
+}
+
+.form-control{
+    border-style:solid;
+    border-color: #a349a4;
+    border-width: 5px;
+    float: left;
+    background-color: #000000;
+    color:#ffffff;
+    border-radius: 0;
+}
+
+.form-control:focus{
+    border-style:solid;
+    border-color: #a349a4;
+    border-width: 5px;
+    float: left;
+    background-color: #000000;
+    color:#ffffff;
+    border-radius: 0;
 }
