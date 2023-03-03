@@ -1,4 +1,4 @@
-const usercont = require('./userContoller');
+const usercont = require('./Controller/userContoller');
 const express = require('express'); //import express
 const morgan = require('morgan'); //import morgan for logging
 const session = require('express-session');
