@@ -70,7 +70,7 @@
         <div class="row">
             <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
             <div class="col-12 col-xs-1 col-s-1 col-md-4 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <button style = "background-color: #000000; border-style:solid; border-width:10px; border-color:#a349a4; border-radius: 20% ; margin-top: 30px; font-size:50px;">
+                <button style = "background-color: #000000; border-style:solid; border-width:10px; border-color:#a349a4; border-radius: 20% ; margin-top: 30px; font-size:50px;" onclick="calculate()">
                     <a href="javascript:void(0)"> Calculate! </a>
                 </button>
             </div>
@@ -81,12 +81,13 @@
         <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
         <div class="col-12 col-xs-1 col-s-1 col-md-4 col-lg-4" style = "font-size:25px; font-weight: 750;">
             <label id = "answerLabel" for="answer" style="font-size: 40px; float: left;">Answer:<br></label>
-            <p style="border-style:solid; border-width:10px; border-color:#a349a4; margin-top: 60px; color:#000000; text-align: left;" class="answer" name="answer">Easter Egg</p>
+            <p style="border-style:solid; border-width:10px; border-color:#a349a4; margin-top: 60px; color:#000000; text-align: left;" class="answer" name="answer" id="answer">Easter Egg</p>
         </div>
         <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
     </div>
 
     <script type = "text/javascript" src = NavBar.js></script>
+    <script type = "text/javascript" src = Calculations.js></script>
     <script type = "text/javascript">
         let option = 0;
         let display = 0;
@@ -114,6 +115,14 @@
                 display = 0;
             }
 
+        }
+        function calculate(){
+            let rate = document.getElementById("rateInput").value;
+            let nper = document.getElementById("nperInput").value;
+            let pmt = document.getElementById("pmtInput").value;
+            let fv = document.getElementById("fvInput").value;
+            document.getElementById('answer').innerHTML = PV(rate, nper, pmt, fv, option);
+            document.getElementById('answer').style.color = "#ffffff";
         }
     </script>
     </body>
