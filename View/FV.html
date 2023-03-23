@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" /> <!-- charset --> 
+        <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- viewport --> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+        <link href="StyleSheet.css" rel="stylesheet">
+
+        <title>FI320 Calculator</title>
+    </head>
+    <body>
+    <div id="NavBar"></div>
+    <div class="row">
+        <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+        <div class="col-12 col-xs-0 cold-md-8 col-lg-4">
+            <h1 id = "header1" name = "header1" style = "font-size:60px; font-weight: 750; margin-top: 40px; margin-bottom: 40px; border-style:solid; border-width:10px; border-color:#a349a4;">
+                <u>Future Value:</u>
+            </h1>
+        </div>
+        <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+    </div>
+    <form id ="calculationForm" onsubmit="return false;">
+        <div class="row">
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <label id = "nperLabel" for="nperInput" style="font-size: 40px; float: left;">Payment Periods:</label>
+                <input type="number" step="0.01" class="form-control" id="nperInput" name="nperInput"></input>
+                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <label id = "pvLabel" for="pvInput" style="font-size: 40px; float: left;">Starting Amount:</label>
+                <input type="number" step="0.01" class="form-control" id="pvInput" name="pvInput"></input>
+                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <label id = "intrestLabel" for="intrestInput" style="font-size: 40px; float: left;">Intrest Rate :</label>
+                <input type="number" step="0.01" class="form-control" id="intrestInput" name="intrestInput"></input>
+                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <label id = "pmtLabel" for="pmtInput" style="font-size: 40px; float: left;">Periodic Deposit :</label>
+                <input type="number" step="0.01" class="form-control" id="pmtInput" name="pmtInput"></input>
+                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
+            <div class="col-12 col-xs-1 col-s-1 col-md-4 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <button style = "background-color: #000000; border-style:solid; border-width:10px; border-color:#a349a4; border-radius: 20% ; margin-top: 30px; font-size:50px;" onclick="calculate()">
+                    <a href="javascript:void(0)"> Calculate! </a>
+                </button>
+            </div>
+            <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
+        <div class="col-12 col-xs-1 col-s-1 col-md-4 col-lg-4" style = "font-size:25px; font-weight: 750;">
+            <label id = "answerLabel" for="answer" style="font-size: 40px; float: left;">Answer:<br></label>
+            <p style="border-style:solid; border-width:10px; border-color:#a349a4; margin-top: 60px; color:#000000; text-align: left;" class="answer" name="answer" id="answer">Easter Egg</p>
+        </div>
+        <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
+    </div>
+
+    <script type = "text/javascript" src = NavBar.js></script>
+    <script type = "text/javascript" src = Calculations.js></script>
+    <script type = "text/javascript">
+        let option = 0;
+        let display = 0;
+        
+        function displayMenu(){
+            if(display === 0){
+                document.getElementById('menu').style.display = "block";
+                display = 1;
+            }else{
+                document.getElementById('menu').style.display = "none";
+                display = 0;
+            }
+
+        }
+        function calculate(){
+            let nper = document.getElementById("nperInput").value;
+            let pv = document.getElementById("pvInput").value;
+            let rate = document.getElementById("intrestInput").value;
+            let pmt = document.getElementById("pmtInput").value;
+
+            document.getElementById('answer').innerHTML = FV(nper, pv, rate, pmt);
+            document.getElementById('answer').style.color = "#ffffff";
+        }
+    </script>
+    </body>
+</html>
