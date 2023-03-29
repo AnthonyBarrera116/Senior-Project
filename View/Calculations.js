@@ -1,5 +1,5 @@
 //Based off of the function from this repo: https://github.com/handsontable/formula.js
-exports.PV = function(rate, nper, pmt, fv, type) {
+PV = function(rate, nper, pmt, fv, type) {
     fv = fv || 0;
   
     rate = parseFloat(rate);
