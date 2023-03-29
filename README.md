@@ -1,9 +1,9 @@
 # Senior-Project
 
-##.env
-PORT = 8000
-HOSTNAME = localhost
-DB_URI = mongodb+srv://SEP:SeniorProject116@sep.vdmphlx.mongodb.net/Test?retryWrites=true&w=majority
+## .env
+* PORT = 8000
+* HOSTNAME = localhost
+* DB_URI = mongodb+srv://SEP:SeniorProject116@sep.vdmphlx.mongodb.net/Test?retryWrites=true&w=majority
 
 ## How to run:
 * Clone the repository.<br>
