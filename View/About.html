@@ -13,111 +13,30 @@
     <body>
     <div id="NavBar"></div>
     <div class="row">
-        <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-        <div class="col-12 col-xs-0 cold-md-8 col-lg-4">
-            <h1 id = "header1" name = "header1" style = "font-size:60px; font-weight: 750; margin-top: 40px; margin-bottom: 40px; border-style:solid; border-width:10px; border-color:#a349a4;">
-                <u>Net Present Value: </u>
+        <div class="col-12 col-xs-0 cold-md-2 col-lg-0"></div>
+        <div class="col-12 col-xs-0 cold-md-8 col-lg-12">
+            <h1 style = "color: #ffffff; font-size:70px; font-weight: 750; margin-top: 40px; margin-bottom: 40px; margin-right: 40px; margin-left: 40px; border-style: solid; border-color:#a349a4; border-width:10px;">
+                Welcome to the FI320 Financial Calculator!
             </h1>
         </div>
-        <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+        <div class="col-12 col-xs-0 cold-md-2 col-lg-0"></div>
     </div>
-    <form id ="calculationForm" onsubmit="return false;">
-        <div class="row">
-            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "invesLabel" for="invesInput" style="font-size: 40px; float: left;">Intial invesment:</label>
-                <input type="number" step="0.01" class="form-control" id="invesInput" name="invesInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "yearsLabel" for="yearsInput" style="font-size: 40px; float: left;">How many years?:</label>
-                <input type="number" step="0.01" class="form-control" id="yearsInput" name="yearsInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "oneLabel" for="oneInput" style="font-size: 40px; float: left;"> Year 1 :</label>
-                <input type="number" step="0.01" class="form-control" id="oneInput" name="oneInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "twoLabel" for="twoInput" style="font-size: 40px; float: left;"> Year 2 :</label>
-                <input type="number" step="0.01" class="form-control" id="twoInput" name="twoInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "threeLabel" for="threeInput" style="font-size: 40px; float: left;"> Year 3 :</label>
-                <input type="number" step="0.01" class="form-control" id="threeInput" name="threeInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "fourLabel" for="fourInput" style="font-size: 40px; float: left;"> Year 4 :</label>
-                <input type="number" step="0.01" class="form-control" id="fourInput" name="fourInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
-            <div class="col-12 col-xs-1 col-s-1 col-md-4 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <button style = "background-color: #000000; border-style:solid; border-width:10px; border-color:#a349a4; border-radius: 20% ; margin-top: 30px; font-size:50px;" onclick="calculate()">
-                    <a href="javascript:void(0)"> Calculate! </a>
-                </button>
-            </div>
-            <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
-        </div>
-    </form>
     <div class="row">
-        <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
-        <div class="col-12 col-xs-1 col-s-1 col-md-4 col-lg-4" style = "font-size:25px; font-weight: 750;">
-            <label id = "answerLabel" for="answer" style="font-size: 40px; float: left;">Answer:<br></label>
-            <p style="border-style:solid; border-width:10px; border-color:#a349a4; margin-top: 60px; color:#000000; text-align: left;" class="answer" name="answer" id="answer">Easter Egg</p>
+        <div class="col-12 col-xs-0 cold-md-2 col-lg-3">
+
         </div>
-        <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
+        <div class="col-12 col-xs-0 cold-md-8 col-lg-6" style = "color: #ffffff; background-color: #000000; font-size:60px; font-family:'Times New Roman', Times, serif;
+        margin-top: 20px; border-style:solid; border-width:10px; border-color:#a349a4;">
+            <p>About this site:</p>
+            <p style ="font-size:30px;">This site is designed to function as a calculator for finance problems from the class, FI320 Financial Management, 
+                taught by Dr. Lisa Fairchild at Loyola University Maryland.</p>
+        </div>
+        <div class="col-12 col-xs-0 cold-md-2 col-lg-3">
+
+        </div>
     </div>
 
     <script type = "text/javascript" src = NavBar.js></script>
-    <script type = "text/javascript" src = Calculations.js></script>
-    <script type = "text/javascript">
-        let option = 0;
-        let display = 0;
-        
-        function displayMenu(){
-            if(display === 0){
-                document.getElementById('menu').style.display = "block";
-                display = 1;
-            }else{
-                document.getElementById('menu').style.display = "none";
-                display = 0;
-            }
-
-        }
-        function calculate(){
-            let Invest = document.getElementById("invesInput").value;
-            let years = document.getElementById("yearsInput").value;
-            let yearOne = document.getElementById("oneLabel").value;
-            
-            let yearTwo = document.getElementById("twoLabel").value;
-            let yearThree = document.getElementById("threeLabel").value;
-            let yearFour = document.getElementById("fourLabel").value;
-
-            document.getElementById('answer').innerHTML = NPV(Invest, years, yearOne, yearTwo, yearThree, yearFour);
-            document.getElementById('answer').style.color = "#ffffff";
-        }
-    </script>
     </body>
 </html>
+<!--In class note: On event, like on click, takes true or false and as an argument which decides if the action will happen or not-->
