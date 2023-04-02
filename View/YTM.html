@@ -25,36 +25,52 @@
         <div class="row">
             <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "nperLabel" for="nperInput" style="font-size: 40px; float: left;">Payment Periods:</label>
-                <input type="number" step="0.01" class="form-control" id="nperInput" name="nperInput"></input>
+                <label id = "priceLabel" for="priceInput" style="font-size: 40px; float: left;">Current Bond Price:</label>
+                <input type="number" step="0.01" class="form-control" id="priceInput" name="priceInput"></input>
                 <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "pvLabel" for="pvInput" style="font-size: 40px; float: left;">Starting Amount:</label>
-                <input type="number" step="0.01" class="form-control" id="pvInput" name="pvInput"></input>
+                <label id = "faceLabel" for="faceInput" style="font-size: 40px; float: left;">Bond Face Value/Par Value:</label>
+                <input type="number" step="0.01" class="form-control" id="faceInput" name="faceInput"></input>
                 <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "intrestLabel" for="intrestInput" style="font-size: 40px; float: left;">Intrest Rate :</label>
-                <input type="number" step="0.01" class="form-control" id="intrestInput" name="intrestInput"></input>
+                <label id = "maturityLabel" for="maturityInput" style="font-size: 40px; float: left;">Years to Maturity :</label>
+                <input type="number" step="0.01" class="form-control" id="maturityInput" name="maturityInput"></input>
                 <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "pmtLabel" for="pmtInput" style="font-size: 40px; float: left;">Periodic Deposit :</label>
-                <input type="number" step="0.01" class="form-control" id="pmtInput" name="pmtInput"></input>
+                <label id = "coupLabel" for="coupInput" style="font-size: 40px; float: left;">Annual Coupon Rate (%)</label>
+                <input type="number" step="0.01" class="form-control" id="coupInput" name="coupInput"></input>
                 <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             </div>
         </div>
-        
+        <div class="row">
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <label id = "pmtMadeLabel" for="pmtMade" style="font-size: 40px; float: left;">Options:</label>
+                <div class="dropdownForm" id="pmtMade" name="pmtMade">
+                    <button class="dropbtnForm" id="whenPayment" onclick="displayMenu()" type="button">Anuually▽</button>
+                    <div class="dropdown-contentForm" id="menu" type="button" style = "border-style: solid; border-top-style: none; border-width: 5px; border-color: #a349a4;">
+                        <a href="javascript:void(0)" id="optionwhen" type="button" onclick="switchOption()">Anuually</a>
+                        <a href="javascript:void(0)" id="optionwhen" type="button" onclick="switchOption()">Semiannually</a>
+                        <a href="javascript:void(0)" id="optionwhen" type="button" onclick="switchOption()">Quarterly</a>
+                        <a href="javascript:void(0)" id="optionwhen" type="button" onclick="switchOption()">Monthly</a>
+                        <a href="javascript:void(0)" id="optionwhen" type="button" onclick="switchOption()">None</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+        </div>
         <div class="row">
             <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
             <div class="col-12 col-xs-1 col-s-1 col-md-4 col-lg-4" style = "font-size:25px; font-weight: 750;">
@@ -79,7 +95,47 @@
     <script type = "text/javascript">
         let option = 0;
         let display = 0;
-        
+        function switchOption(){
+            if(option === 0){
+                option = 1;
+                document.getElementById('whenPayment').innerHTML = "Anuually ▽";
+                document.getElementById('optionwhen').innerHTML = "Anuually";
+                document.getElementById('menu').style.display = "none";
+                display = 0;
+            }
+            
+            else if(option === 1){
+                option = 2;
+                document.getElementById('whenPayment').innerHTML = "Anuually▽";
+                document.getElementById('optionwhen').innerHTML = "Anuually";
+                document.getElementById('menu').style.display = "none";
+                display = 0;
+            }
+
+            else if(option === 2){
+                option = 3;
+                document.getElementById('whenPayment').innerHTML = "Anuually▽";
+                document.getElementById('optionwhen').innerHTML = "Anuually";
+                document.getElementById('menu').style.display = "none";
+                display = 0;
+            }
+
+            else if(option === 3){
+                option = 4;
+                document.getElementById('whenPayment').innerHTML = "Anuually▽";
+                document.getElementById('optionwhen').innerHTML = "Anuually";
+                document.getElementById('menu').style.display = "none";
+                display = 0;
+            }
+
+            else{
+                option = 0;
+                document.getElementById('whenPayment').innerHTML = "Anuually▽";
+                document.getElementById('optionwhen').innerHTML = "Anuually";
+                document.getElementById('menu').style.display = "none";
+                display = 0;
+            }
+        }
         function displayMenu(){
             if(display === 0){
                 document.getElementById('menu').style.display = "block";
@@ -96,7 +152,7 @@
             let rate = document.getElementById("intrestInput").value;
             let pmt = document.getElementById("pmtInput").value;
 
-            document.getElementById('answer').innerHTML = FV(nper, pv, rate, pmt);
+            document.getElementById('answer').innerHTML = FV(nper, pv, rate, pmt, option);
             document.getElementById('answer').style.color = "#ffffff";
         }
     </script>
