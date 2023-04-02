@@ -123,7 +123,7 @@
             let nper = document.getElementById("nperInput").value;
             let pmt = document.getElementById("pmtInput").value;
             let pv = document.getElementById("pvInput").value;
-            document.getElementById('answer').innerHTML = FV(rate, nper, pmt, pv, option);
+            document.getElementById('answer').innerHTML = exports.FV(rate, nper, pmt, pv, option);
             document.getElementById('answer').style.color = "#ffffff";
         }
     </script>
