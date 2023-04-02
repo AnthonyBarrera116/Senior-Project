@@ -16,8 +16,7 @@ exports.app.use(express.static('View'));
 
 exports.app.use(express.urlencoded({extended: true}));
 exports.app.use(express.json());
-exports.app.post('/create', usercont.postCreateOrUpdate);
+exports.app.post('/create', usercont.Create);
 exports.app.post('/login', usercont.login);
 exports.app.get('/loggedUser',usercont.loggedUser)
 exports.app.get('/logout',usercont.logout)
-exports.app.get('/getHis',usercont.getHistory)
