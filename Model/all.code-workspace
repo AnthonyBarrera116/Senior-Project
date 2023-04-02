@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "../View"
+		},
+		{
+			"path": "../Controller"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../node_modules"
+		},
+		{
+			"path": "../public"
+		},
+		{
+			"path": "../Test"
+		},
+		{
+			"path": "../util"
+		}
+	]
+}

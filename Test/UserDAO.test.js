@@ -1,50 +1,38 @@
 const dbcon = require('../Model/dbConnect');
-let dao = require("../Model/UserDAO");
+const dao = require('../Model/UserDAO');
 
 beforeAll(function(){
-    dbcon.connect();
+    dbcon.connect('test');
+});
+afterAll(async function(){
+    await dao.deleteAll();
+    dbcon.disconnect();
+});
+afterEach(function(){
+    //No need
 });
 
-
-test('createUser', async function()
-{
-    let newuser = {}; 
-
-    newuser.Email = "Test@gmail.com";
-    newuser.Password = "123456";
-    newuser.History = [];
-
-    let user = await dao.create(newuser);
-    expect(user).not.toBe(null);
-    
+test('Create new user test',async function(){
+    let newdata = {Email:'test@test.com',
+                  password:'123456'};
+    let created = await dao.create(newdata);
+    let found = await dao.read(created._id);
+    expect(created.login).toBe(found.login); //assertion
 });
 
-test('duplicate', async function()
-{
-    let newuser = {}; 
-
-    newuser.Email = "Test@gmail.com";
-    newuser.Password = "123456";
-    newuser.History = [];
-
-    let dup = await dao.findOne({Email: "Test@gmail.com"});
-
-    expect(dup.Email).toBe(newuser.Email);
-    
+test('Duplicate User',async function(){
+    let newdata = {Email:'test@test.com',
+                  password:'123456'};
+    let dup = await dao.find(newdata.Email);
+    let found = await dao.read(dup._id);
+    expect(dup.Email).toBe(found.Email); //assertion
 });
 
-test('find', async function()
-{ 
-
-    let user = await dao.findOne({Email: "Test@gmail.com"});
-    expect(user).not.toBe(null);
-
-});
-
-test('login', async function()
-{ 
-
-    let user = await dao.login({Email: "Test@gmail.com", Password: "123456"});
-    expect(user).not.toBe(null);
-
+test('Update',async function(){
+    let newdata = {Email:'test@test.com',
+                  password:'123456',
+                  history: [1]};
+    let updated = await dao.update(newdata);
+    let found = await dao.read(updated._id);
+    expect(updated.history).toBe(found.history); //assertion
 });

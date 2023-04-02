@@ -1,14 +1,20 @@
-const { Db } = require('mongodb');
+// Call DBConnection on the Server.js
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
     Email: { type:String, alias:'email', required:true },
-    Password: String,
-    History: [],
- },
-{ collection : 'Users' });
+    password: String,
+    history: []
+});
 
-const userModel = mongoose.model('Users', userSchema);
+const userModel = mongoose.model('user',userSchema);
+
+
+
+exports.read = async function(id){
+    let user = await userModel.findById(id);
+    return user;
+}
 
 exports.create = async function(newuser){
     const user = new userModel(newuser);
@@ -16,13 +22,21 @@ exports.create = async function(newuser){
     return user;
 }
 
-exports.findOne = async function(id){
-    let user = await userModel.findOne({Email: id});
-
+exports.update = async function(upUser){
+    const user = userModel.updateOne(upUser);
     return user;
 }
 
-exports.login = async function(email, password){
-    let user = await userModel.findOne({Email:email, Password:password});
+exports.login = async function(plogin, pwd){
+    let user = await userModel.findOne({login:plogin, password:pwd});
     return user;
+}
+
+exports.find = async function(em){
+    let user = await userModel.findOne({Email: em});
+    return user;
+}
+
+exports.deleteAll = async function(){
+    await userModel.deleteMany();
 }
