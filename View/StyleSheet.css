@@ -60,7 +60,7 @@ display: block;
 /*.dropdown-content a:hover {background-color: #ddd;}*/
 
 /* Show the dropdown menu on hover */
-.dropdownNav:hover .dropdown-content{
+.dropdownNav:hover .dropdown-contentNav{
     display: block;
 }
 
