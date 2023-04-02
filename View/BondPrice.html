@@ -87,8 +87,8 @@
         </div>
         <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
     </div>
-
     <script type = "text/javascript" src = NavBar.js></script>
+    <script>let exports = {};</script>
     <script type = "text/javascript" src = Calculations.js></script>
     <script type = "text/javascript">
         let option = 0;
@@ -150,7 +150,7 @@
             let mr = document.getElementById("mrInput").value;
             let bfv = document.getElementById("bfvInput").value;
             let acr = document.getElementById("acrInput").value;
-            document.getElementById('answer').innerHTML = BP(ym, mr, bfv, acr, option);
+            document.getElementById('answer').innerHTML = exports.BP(ym, mr, bfv, acr, option);
             document.getElementById('answer').style.color = "#ffffff";
         }
     </script>
