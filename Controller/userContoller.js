@@ -1,5 +1,5 @@
 const dao = require('../Model/UserDAO');
-const passUtil = require('../util/PasswordUtil');
+const passUtil = require('../util/Password');
 
 exports.postCreateOrUpdate = function(req,res){
 

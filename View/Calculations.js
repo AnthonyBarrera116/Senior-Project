@@ -51,7 +51,7 @@ bp = function(ym, mr, bfv, acr, type) {
 
   }
 
-  return ((pmt * (1 - Math.pow(1 + i,-n)))/i) + (bfv * (math.pow(1 + i,-n)))
+  return ((pmt * (1 - Math.pow(1 + i,-n)))/i) + (bfv * (math.pow(1)))
 
   
 };
