@@ -1,5 +1,5 @@
 document.getElementById('NavBar').innerHTML = `<nav class="container-fluid" style = "font-size:50px; text-align: left;">
-<div class="row" style = "border-bottom-style:solid; border-width: 5px; border-color: #000000; background-color: #a349a4;">
+<div class="row" style = "background-color: #a349a4;">
     <div class="col-12 col-xs-12 col-md-12 col-lg-12">
         <a href="About.html" style = "margin-right: 40px;"> FI320 Calculator </a>
         <div class="dropdownNav">
