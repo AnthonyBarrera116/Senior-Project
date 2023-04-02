@@ -59,11 +59,11 @@
             <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
                 <label id = "pmtMadeLabel" for="pmtMade" style="font-size: 40px; float: left;">Options:</label>
                 <div class="dropdownForm" id="pmtMade" name="pmtMade">
-                    <button class="dropbtnForm" id="whenPayment" onclick="displayMenu()" type="button">Annually▽</button>
+                    <button class="dropbtnForm" id="whenPayment" onclick="displayMenu()" type="button">Annually ▽</button>
                     <div class="dropdown-contentForm" id="menu" type="button" style = "border-style: solid; border-top-style: none; border-width: 5px; border-color: #a349a4;">
-                        <a href="javascript:void(0)" id="optionwhen1" type="button" onclick="switchOption()">Semiannually</a>
-                        <a href="javascript:void(0)" id="optionwhen2" type="button" onclick="switchOption()">Quarterly</a>
-                        <a href="javascript:void(0)" id="optionwhen3" type="button" onclick="switchOption()">Monthly</a>
+                        <a href="javascript:void(0)" id="optionwhen1" type="button" onclick="switchOption('optionwhen1')">Semiannually</a>
+                        <a href="javascript:void(0)" id="optionwhen2" type="button" onclick="switchOption('optionwhen2')">Quarterly</a>
+                        <a href="javascript:void(0)" id="optionwhen3" type="button" onclick="switchOption('optionwhen3')">Monthly</a>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,28 @@
     <script type = "text/javascript">
         let option = 0;
         let display = 0;
-        function switchOption(){
+        
+        function switchOption(paymentOption){
+            //Swap the options
+            let whenPayment = document.getElementById('whenPayment').innerHTML;
+            let optionWhen = document.getElementById(paymentOption).innerHTML;
+            document.getElementById('whenPayment').innerHTML =  optionWhen + " ▽";
+            document.getElementById(paymentOption).innerHTML = whenPayment.substring(0, whenPayment.length - 2);
+
+            //Hide the menu
+            document.getElementById('menu').style.display = "none";
+            display = 0;
+            
+            //Check which option was chosen and update the variable
+            let options = ["Annually ▽", "Semiannually ▽", "Quarterly ▽", "Monthly"]
+            for(let i = 0; i < options.length; i++){
+                if (optionWhen === options[i]){
+                    option = i;
+                    break;
+                }
+            }
+        }
+        /*function switchOption(){
             if(option === 0){
                 option = 1;
                 document.getElementById('whenPayment').innerHTML = "Semiannually▽";
@@ -134,7 +155,7 @@
                 document.getElementById('menu').style.display = "none";
                 display = 0;
             }
-        }
+        }*/
         function displayMenu(){
             if(display === 0){
                 document.getElementById('menu').style.display = "block";
@@ -150,7 +171,7 @@
             let mr = document.getElementById("mrInput").value;
             let bfv = document.getElementById("bfvInput").value;
             let acr = document.getElementById("acrInput").value;
-            document.getElementById('answer').innerHTML = exports.BP(ym, mr, bfv, acr, option);
+            document.getElementById('answer').innerHTML = exports.bp(ym, mr, bfv, acr, option);
             document.getElementById('answer').style.color = "#ffffff";
         }
     </script>
