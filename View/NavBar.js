@@ -21,12 +21,13 @@ async function getUsers(){
                             </div>
                         </div>
                         <div class="dropdownNav">
-                            <button class="dropbtnNav" style= "text-decoration: underline;">Stocks</button>
+                            <button class="dropbtnNav" style= "text-decoration: underline;">Stocks Calculators</button>
                             <div class="dropdown-contentNav" style = "border-style: solid; border-top-style: none; border-width: 5px; border-color: #000000;">
                                 <a href="AnnualGrowthDividends.html">Annual Growth of Dividends</a>
                                 <a href="AnnualGrowthStock.html">Annual Growth of a Stock</a>
                                 <a href="ExpectedDividends.html">Expected Dividends</a>
                                 <a href="PresentStockPrice.html">Present Stock Price</a>
+                                <a href="FutureStockPrice.html">Future Stock Price</a>
                             </div>
                         </div>
                         <div class="dropdownNav">
@@ -79,12 +80,13 @@ async function getUsers(){
                             </div>
                         </div>
                         <div class="dropdownNav">
-                            <button class="dropbtnNav" style= "text-decoration: underline;">Stocks</button>
+                            <button class="dropbtnNav" style= "text-decoration: underline;">Stocks Calculators</button>
                             <div class="dropdown-contentNav" style = "border-style: solid; border-top-style: none; border-width: 5px; border-color: #000000;">
                                 <a href="AnnualGrowthDividends.html">Annual Growth of Dividends</a>
                                 <a href="AnnualGrowthStock.html">Annual Growth of a Stock</a>
                                 <a href="ExpectedDividends.html">Expected Dividends</a>
                                 <a href="PresentStockPrice.html">Present Stock Price</a>
+                                <a href="FutureStockPrice.html">Future Stock Price</a>
                             </div>
                         </div>
                         <div class="dropdownNav">

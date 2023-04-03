@@ -6,18 +6,19 @@ exports.postCreateOrUpdate = function(req,res){
     let newuser = {}; //empty obj
     newuser.Email = req.body.emailUser;
     newuser.password = passUtil.hashPassword(req.body.password);
+    try{
+        let exists = dao.find(newuser.Email);
 
-    if(req.body.txt_id){
-        //update user
-        console.log('Update user');
-        newuser.history = req.body.history;
-        dao.update(newuser);
+        res.redirect('CreateAccount.html?error=1');
+
     }
-    else{
-        //insert user
-        dao.create(newuser);        
+    catch{
+
+        dao.create(newuser);     
+
+        res.redirect('login.html');
     }
-    res.redirect('login.html');
+
 }
 
 exports.login = async function(req, res){

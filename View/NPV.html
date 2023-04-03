@@ -91,6 +91,7 @@
     </div>
 
     <script type = "text/javascript" src = NavBar.js></script>
+    <script>let exports = {};</script>
     <script type = "text/javascript" src = Calculations.js></script>
     <script type = "text/javascript">
         let option = 0;
@@ -115,7 +116,7 @@
             let yearThree = document.getElementById("threeLabel").value;
             let yearFour = document.getElementById("fourLabel").value;
 
-            document.getElementById('answer').innerHTML = NPV(Invest, rate, yearOne, yearTwo, yearThree, yearFour);
+            document.getElementById('answer').innerHTML = exports.NPV(Invest, rate, yearOne, yearTwo, yearThree, yearFour);
             document.getElementById('answer').style.color = "#ffffff";
         }
     </script>

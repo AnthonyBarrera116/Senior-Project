@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,7 +17,7 @@
         <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
         <div class="col-12 col-xs-0 cold-md-8 col-lg-4">
             <h1 id = "header1" name = "header1" style = "font-size:60px; font-weight: 750; margin-top: 40px; margin-bottom: 40px; border-style:solid; border-width:10px; border-color:#a349a4;">
-                <u>Yeild of Maturity:</u>
+                <u>Capital Asset Pricing Model: </u>
             </h1>
         </div>
         <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
@@ -25,51 +26,29 @@
         <div class="row">
             <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "priceLabel" for="priceInput" style="font-size: 40px; float: left;">Current Bond Price:</label>
-                <input type="number" step="0.01" class="form-control" id="priceInput" name="priceInput"></input>
+                <label id = "expLabel" for="expInput" style="font-size: 40px; float: left;">Expected Market Return E(Rm):</label>
+                <input type="number" step="0.01" class="form-control" id="expInput" name="expInput"></input>
                 <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "faceLabel" for="faceInput" style="font-size: 40px; float: left;">Bond Face Value/Par Value:</label>
-                <input type="number" step="0.01" class="form-control" id="faceInput" name="faceInput"></input>
+                <label id = "rateLabel" for="rateInput" style="font-size: 40px; float: left;">Risk Free Rate Rf:</label>
+                <input type="number" step="0.01" class="form-control" id="rateInput" name="rateInput"></input>
                 <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "maturityLabel" for="maturityInput" style="font-size: 40px; float: left;">Years to Maturity :</label>
-                <input type="number" step="0.01" class="form-control" id="maturityInput" name="maturityInput"></input>
+                <label id = "stockLabel" for="stockInput" style="font-size: 40px; float: left;">Beta for Stock βi:</label>
+                <input type="number" step="0.01" class="form-control" id="stockInput" name="stockInput"></input>
                 <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "coupLabel" for="coupInput" style="font-size: 40px; float: left;">Annual Coupon Rate (%)</label>
-                <input type="number" step="0.01" class="form-control" id="coupInput" name="coupInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "pmtMadeLabel" for="pmtMade" style="font-size: 40px; float: left;">Options:</label>
-                <select id="select1">
-                    <option value=0>Annually</option>
-                    <option value=1>Semiannually</option>
-                    <option value=2>Quarterly</option>
-                    <option value=3>Monthly</option>
-                </select>
-                
-                <button onclick="getOption()"> Confirm </button>
-                
-            </div>
-            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-        </div>
+        
+        
         <div class="row">
             <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
             <div class="col-12 col-xs-1 col-s-1 col-md-4 col-lg-4" style = "font-size:25px; font-weight: 750;">
@@ -96,11 +75,6 @@
         let option = 0;
         let display = 0;
         
-        function getOption() {
-            selectElement = document.querySelector('#select1');
-            option = selectElement.value;
-        }
-
         function displayMenu(){
             if(display === 0){
                 document.getElementById('menu').style.display = "block";
@@ -112,12 +86,12 @@
 
         }
         function calculate(){
-            let priceInput = document.getElementById("priceInput").value;
-            let faceInput = document.getElementById("faceInput").value;
-            let maturityInput = document.getElementById("maturityInput").value;
-            let coupInput = document.getElementById("coupInput").value;
+            let expInput = document.getElementById("expInput").value;
+            let rateInput = document.getElementById("rateInput").value;
+            
+            let stockInput = document.getElementById("stockInput").value;
 
-            document.getElementById('answer').innerHTML = exports.YTM(priceInput, faceInput, maturityInput, coupInput, option);
+            document.getElementById('answer').innerHTML = exports.CAPM(expInput, rateInput, stockInput);
             document.getElementById('answer').style.color = "#ffffff";
         }
     </script>

@@ -37,16 +37,12 @@ exports.FV = function(rate, nper, pmt, pv, type){
   return -(result).toFixed(2);
 };
 
-exports.bp = function(ym, mr, bfv, acr, type) {
+exports.BP = function(ym, mr, bfv, acr, type) {
 
   ym = parseFloat(ym);
   mr = parseFloat(mr);
   bfv = parseFloat(bfv);
   acr = parseFloat(acr);
-
-  let n =0;
-  let i =0;
-  let pmt = 0;
   
   if(type == 1){
     n =2 * ym;
@@ -66,15 +62,85 @@ exports.bp = function(ym, mr, bfv, acr, type) {
     n =12 * ym;
     i = mr / 12;
     pmt = (bfv * acr)/ 12;
+
   }
   else{
-    n =1 * ym;
+    n = 1 * ym;
     i = mr / 1;
     pmt = (bfv * acr)/ 1;
 
   }
 
-  return ((pmt * (1 - Math.pow(1 + i,-n)))/i) + (bfv * (math.pow(1)))
-
+  return (((pmt * (1 - (1 + i)**-n))/i) + (bfv * (1 + i)**-n)).toFixed(2)
   
 };
+
+exports.NPV = function(Invest, rate, yearOne, yearTwo, yearThree, yearFour){
+
+  return -1;
+
+
+}
+
+exports.PMT = function(loanInput,TermInput,rateLabel){
+
+  return -1;
+
+
+}
+
+exports.NPER = function(pvInput,fvLabel,pmtInput,rateInput,option){
+
+  return -1;
+
+
+}
+
+exports.YTM = function(nper, pv, rate, pmt, option){
+
+  return -1;
+
+
+}
+
+exports.AnnGroDiv = function(divInput,rateInput,yearsInput){
+
+  return -1;
+
+}
+
+exports.AnnGroSt = function(priceInput, faceInput, maturityInput, coupInput, option){
+
+  return -1;
+
+}
+
+exports.PSP = function(CurInput, rateInput, stockInput){
+
+  return -1;
+
+}
+
+exports.FSP = function(numPInput, pvInput, rateInput, pmtInput,option){
+
+  return -1;
+
+}
+
+exports.WACC = function(invesInput, totalInput, costInput, debtInput, rateInput){
+
+  return -1;
+
+}
+
+exports.EAA = function(NPVInput, perInput, rateInput){
+
+  return -1;
+
+}
+
+exports.CAPM = function(expInput, rateInput, stockInput){
+
+  return -1;
+
+}

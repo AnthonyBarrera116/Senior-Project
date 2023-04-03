@@ -17,7 +17,7 @@
         <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
         <div class="col-12 col-xs-0 cold-md-8 col-lg-4">
             <h1 id = "header1" name = "header1" style = "font-size:60px; font-weight: 750; margin-top: 40px; margin-bottom: 40px; border-style:solid; border-width:10px; border-color:#a349a4;">
-                <u>Net Present Value: </u>
+                <u>Weighted Average Cost of Capital: </u>
             </h1>
         </div>
         <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
@@ -84,6 +84,7 @@
     </div>
 
     <script type = "text/javascript" src = NavBar.js></script>
+    <script>let exports = {};</script>
     <script type = "text/javascript" src = Calculations.js></script>
     <script type = "text/javascript">
         let option = 0;
@@ -100,14 +101,14 @@
 
         }
         function calculate(){
-            let Invest = document.getElementById("invesInput").value;
-            let total = document.getElementById("totalInput").value;
-            let cost = document.getElementById("costInput").value;
+            let invesInput = document.getElementById("invesInput").value;
+            let totalInput = document.getElementById("totalInput").value;
+            let costInput = document.getElementById("costInput").value;
             
-            let debt = document.getElementById("debtInput").value;
-            let rate = document.getElementById("rateInput").value;
+            let debtInput = document.getElementById("debtInput").value;
+            let rateInput = document.getElementById("rateInput").value;
 
-            document.getElementById('answer').innerHTML = NPV(Invest, total, cost, debt, rate, yearFour);
+            document.getElementById('answer').innerHTML = exports.WACC(invesInput, totalInput, costInput, debtInput, rateInput);
             document.getElementById('answer').style.color = "#ffffff";
         }
     </script>

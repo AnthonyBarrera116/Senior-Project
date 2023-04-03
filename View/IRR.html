@@ -16,7 +16,7 @@
         <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
         <div class="col-12 col-xs-0 cold-md-8 col-lg-4">
             <h1 id = "header1" name = "header1" style = "font-size:60px; font-weight: 750; margin-top: 40px; margin-bottom: 40px; border-style:solid; border-width:10px; border-color:#a349a4;">
-                <u>Net Present Value: </u>
+                <u>Internal Rate of Return: </u>
             </h1>
         </div>
         <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
@@ -91,6 +91,7 @@
     </div>
 
     <script type = "text/javascript" src = NavBar.js></script>
+    <script>let exports = {};</script>
     <script type = "text/javascript" src = Calculations.js></script>
     <script type = "text/javascript">
         let option = 0;
@@ -115,7 +116,7 @@
             let yearThree = document.getElementById("threeLabel").value;
             let yearFour = document.getElementById("fourLabel").value;
 
-            document.getElementById('answer').innerHTML = NPV(Invest, years, yearOne, yearTwo, yearThree, yearFour);
+            document.getElementById('answer').innerHTML = exports.NPV(Invest, years, yearOne, yearTwo, yearThree, yearFour);
             document.getElementById('answer').style.color = "#ffffff";
         }
     </script>
