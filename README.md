@@ -1,7 +1,7 @@
 # Senior-Project
 
 ## .env
-* PORT = 8000
+* PORT = 4000
 * HOSTNAME = localhost
 * DB_URI = mongodb+srv://SEP:@sep.vdmphlx.mongodb.net/Test?retryWrites=true&w=majority
 
