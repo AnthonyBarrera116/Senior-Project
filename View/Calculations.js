@@ -46,31 +46,30 @@ exports.BP = function(ym, mr, bfv, acr, type) {
   
   if(type == 1){
     n =2 * ym;
-    i = mr / 2;
+    i = (mr / 2) / 100;
     pmt = (bfv * acr)/ 2;
 
 
   }
   else if(type == 2){
     n = 4 * ym;
-    i = mr / 4;
+    i = (mr / 4)/ 100;
     pmt = (bfv * acr)/ 4;
 
   }
   else if(type == 3){
 
     n =12 * ym;
-    i = mr / 12;
+    i = (mr / 12)/ 100;
     pmt = (bfv * acr)/ 12;
 
   }
   else{
     n = 1 * ym;
-    i = mr / 1;
+    i = (mr / 1)/ 100;
     pmt = (bfv * acr)/ 1;
 
   }
-
   return (((pmt * (1 - (1 + i)**-n))/i) + (bfv * (1 + i)**-n)).toFixed(2)
   
 };

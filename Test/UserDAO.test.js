@@ -1,12 +1,9 @@
 const dbcon = require('../Model/dbConnect');
 const dao = require('../Model/UserDAO');
 
+const passUtil = require('../util/Password');
 beforeAll(function(){
     dbcon.connect('test');
-});
-afterAll(async function(){
-    await dao.deleteAll();
-    dbcon.disconnect();
 });
 afterEach(function(){
     //No need
@@ -14,15 +11,25 @@ afterEach(function(){
 
 test('Create new user test',async function(){
     let newdata = {Email:'test@test.com',
-                  password:'123456'};
+                    password:passUtil.hashPassword("123456"),
+                    history: []};
     let created = await dao.create(newdata);
     let found = await dao.read(created._id);
-    expect(created.login).toBe(found.login); //assertion
+    expect(created.Email).toBe(found.Email); //assertion
+});
+
+
+test('Log in User',async function(){
+    let newdata = {Email:'test@test.com',
+                    password:passUtil.hashPassword("123456")};
+    let dup = await dao.login(newdata.Email,newdata.password);
+    let found = await dao.read(dup._id);
+    expect(dup.Email).toBe(found.Email); //assertion
 });
 
 test('Duplicate User',async function(){
     let newdata = {Email:'test@test.com',
-                  password:'123456'};
+                    password:passUtil.hashPassword("123456")};
     let dup = await dao.find(newdata.Email);
     let found = await dao.read(dup._id);
     expect(dup.Email).toBe(found.Email); //assertion
@@ -30,9 +37,13 @@ test('Duplicate User',async function(){
 
 test('Update',async function(){
     let newdata = {Email:'test@test.com',
-                  password:'123456',
-                  history: [1]};
+                    password:passUtil.hashPassword("123456"),
+                    history: [3]};
     let updated = await dao.update(newdata);
     let found = await dao.read(updated._id);
-    expect(updated.history).toBe(found.history); //assertion
+    expect(JSON.stringify(updated.history)).toBe(JSON.stringify(found.history)); //assertion
+});
+afterAll(async function(){
+    await dao.deleteAll();
+    dbcon.disconnect();
 });

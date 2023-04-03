@@ -1,4 +1,5 @@
-const calculations = require("./View/Calculations.js");
+const calculations = require("../View/Calculations.js");
+
 
 test('Calculate PV', async function()
 {
@@ -10,3 +11,8 @@ test('Calculate FV', async function()
 {
     expect(calculations.FV(0.06, 25, 0, 4800, 0)).toBe(-20600.98);
 });
+test('Calculate BP', async function()
+{
+    expect(calculations.BP(9, 8, 1000, .06, 1)).toBe("873.41");
+});
+

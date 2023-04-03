@@ -23,7 +23,8 @@ exports.create = async function(newuser){
 }
 
 exports.update = async function(upUser){
-    const user = userModel.updateOne(upUser);
+    const update = userModel.updateOne({Email: upUser.Email}, { $set: {history:upUser.history}}) 
+    let user = await userModel.findOne({Email: upUser.Email});
     return user;
 }
 

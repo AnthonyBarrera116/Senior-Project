@@ -1,23 +1,32 @@
 const dao = require('../Model/UserDAO');
 const passUtil = require('../util/Password');
 
-exports.postCreateOrUpdate = function(req,res){
+exports.postCreateOrUpdate = async function(req,res){
 
     let newuser = {}; //empty obj
     newuser.Email = req.body.emailUser;
     newuser.password = passUtil.hashPassword(req.body.password);
+    
     try{
-        let exists = dao.find(newuser.Email);
 
+        let exists = await dao.find(newuser.Email);
+        let found = await dao.read(exists._id);
+        
+    
         res.redirect('CreateAccount.html?error=1');
+    
 
     }
-    catch{
+    
 
-        dao.create(newuser);     
+    catch{ //incorrect login or password
 
+        dao.create(newuser);    
+       
         res.redirect('login.html');
+
     }
+    
 
 }
 
