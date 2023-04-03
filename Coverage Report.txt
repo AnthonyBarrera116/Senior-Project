@@ -1,10 +1,25 @@
-------------------|---------|----------|---------|---------|-------------------
-File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
-------------------|---------|----------|---------|---------|-------------------
-All files         |   82.85 |     62.5 |   85.71 |   82.35 |                   
- Model            |   76.92 |       50 |   83.33 |      76 |                   
-  UserDAO.js      |   78.57 |      100 |     100 |   78.57 | 16,22,27          
-  dbConnect.js    |      75 |       50 |   66.66 |   72.72 | 8-9,16
- View             |     100 |       75 |     100 |     100 | 
-  Calculations.js |     100 |       75 |     100 |     100 | 3
-------------------|---------|----------|---------|---------|-------------------
+> test
+> jest --coverage
+
+ PASS  Test/Calculations.test.js
+(node:34912) [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ PASS  Test/UserDAO.test.js        
+------------------|---------|----------|---------|---------|------------------------------------------------------
+File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+------------------|---------|----------|---------|---------|------------------------------------------------------
+All files         |   75.24 |    44.44 |   54.16 |      76 |                                                      
+ Model            |   96.77 |       50 |     100 |     100 |                                                      
+  UserDAO.js      |     100 |      100 |     100 |     100 |                                                      
+  dbConnect.js    |   88.88 |       50 |     100 |     100 | 8                                                    
+ Util             |     100 |      100 |     100 |     100 |                                                      
+  Password.js     |     100 |      100 |     100 |     100 |                                                      
+ View             |   63.07 |    43.75 |   21.42 |   63.07 |                                                      
+  Calculations.js |   63.07 |    43.75 |   21.42 |   63.07 | 28,32,54-70,79,86,93,100,107,113,119,125,131,137,143 
+------------------|---------|----------|---------|---------|------------------------------------------------------
+
+Test Suites: 2 passed, 2 total     
+Tests:       7 passed, 7 total     
+Snapshots:   0 total
+Time:        1.767 s, estimated 2 s
+Ran all test suites.
