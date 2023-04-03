@@ -33,21 +33,18 @@
             <input type="password" id="password" name="password" required><br>
             </h1>
             <button type="submit" style="background-color: #a349a4;color: rgb(255, 255, 255); height: 50px; width: 200px; " > Create Account </button>
-        
+            <div class="col-md-15" id="msg-display" >
+            </div>
           </form>
         
-          <div class="container">
-            <div class="row">
-              <div class="col-md-6" id="msg-display" style="color: #a349a4;">
-              </div>
-            </div>
-          </div>
+          
         </div>
         <div class="col-12 col-xs-0 cold-md-2 col-lg-0"></div>
     </div>
 
   <script type = "text/javascript" src = NavBar.js>
-    
+  </script>
+  <script type = "text/javascript" >
 
     const params = new URLSearchParams(window.location.search);    
     let error = params.get('error');
