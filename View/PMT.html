@@ -25,28 +25,48 @@
         <div class="row">
             <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "loanLabel" for="loanInput" style="font-size: 40px; float: left;">Loan Amount:</label>
-                <input type="number" step="0.01" class="form-control" id="loanInput" name="loanInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "TermLabel" for="TermInput" style="font-size: 40px; float: left;">Loan Term:</label>
-                <input type="number" step="0.01" class="form-control" id="TermInput" name="TermInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "rateLabel" for="rateInput" style="font-size: 39px; float: left;">Intrest Rate %:</label>
+                <label id = "rateLabel" for="rateInput" style="font-size: 40px; float: left;">Rate:</label>
                 <input type="number" step="0.01" class="form-control" id="rateInput" name="rateInput"></input>
+            </div>
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <label id = "nperLabel" for="nperInput" style="font-size: 40px; float: left;">Payment Periods:</label>
+                <input type="number" step="0.01" class="form-control" id="nperInput" name="nperInput"></input>
+            </div>
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <label id = "pvLabel" for="pvInput" style="font-size: 40px; float: left;">Present Value:</label>
+                <input type="number" step="0.01" class="form-control" id="pvInput" name="pvInput"></input>
                 <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             </div>
         </div>
-        
+        <div class="row">
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <label id = "fvLabel" for="fvInput" style="font-size: 40px; float: left;">Future Value (Optional):</label>
+                <input type="number" step="0.01" class="form-control" id="fvInput" name="fvInput"></input>
+            </div>
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <label id = "pmtMadeLabel" for="pmtMade" style="font-size: 40px; float: left;">When Payments are Made:</label>
+                <div class="dropdownForm" id="pmtMade" name="pmtMade">
+                    <button class="dropbtnForm" id="whenPayment" onclick="displayMenu()" type="button">At the end of the period ▽</button>
+                    <div class="dropdown-contentForm" id="menu" type="button" style = "border-style: solid; border-top-style: none; border-width: 5px; border-color: #a349a4;">
+                        <a href="javascript:void(0)" id="optionwhen" type="button" onclick="switchOption()">At the beginning of the period</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+        </div>
         <div class="row">
             <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
             <div class="col-12 col-xs-1 col-s-1 col-md-4 col-lg-4" style = "font-size:25px; font-weight: 750;">
@@ -73,7 +93,21 @@
         let option = 0;
         let display = 0;
         
-        
+        function switchOption(){
+            if(option === 0){
+                option = 1;
+                document.getElementById('whenPayment').innerHTML = "At the beginning of the period ▽";
+                document.getElementById('optionwhen').innerHTML = "At the end of the period";
+                document.getElementById('menu').style.display = "none";
+                display = 0;
+            }else{
+                option = 0;
+                document.getElementById('whenPayment').innerHTML = "At the end of the period ▽";
+                document.getElementById('optionwhen').innerHTML = "At the beginning of the period";
+                document.getElementById('menu').style.display = "none";
+                display = 0;
+            }
+        }
         function displayMenu(){
             if(display === 0){
                 document.getElementById('menu').style.display = "block";
@@ -85,10 +119,11 @@
 
         }
         function calculate(){
-            let loanInput = document.getElementById("loanInput").value;
-            let TermInput = document.getElementById("TermInput").value;
-            let rateLabel = document.getElementById("rateLabel").value;
-            document.getElementById('answer').innerHTML = exports.PMT(loanInput,TermInput,rateLabel);
+            let rate = document.getElementById("rateInput").value;
+            let nper = document.getElementById("nperInput").value;
+            let pv = document.getElementById("pvInput").value;
+            let fv = document.getElementById("fvInput").value;
+            document.getElementById('answer').innerHTML = exports.PMT(rate, nper, pv, fv, option);
             document.getElementById('answer').style.color = "#ffffff";
         }
     </script>
