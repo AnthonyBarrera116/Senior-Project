@@ -70,7 +70,7 @@ exports.BP = function(ym, mr, bfv, acr, type) {
     pmt = (bfv * acr)/ 1;
 
   }
-  return (((pmt * (1 - (1 + i)**-n))/i) + (bfv * (1 + i)**-n)).toFixed(2)
+  return (((pmt * (1 - (1 + i)**-n))/i) + (bfv * (1 + i)**-n)).toFixed(2);
   
 };
 
@@ -81,11 +81,26 @@ exports.NPV = function(Invest, rate, yearOne, yearTwo, yearThree, yearFour){
 
 }
 
-exports.PMT = function(loanInput,TermInput,rateLabel){
+exports.PMT = function(rate, nper, pv, fv, type){
+  fv = fv || 0;
 
-  return -1;
+  rate = parseFloat(rate);
+  nper = parseFloat(nper);
+  pv = parseFloat(pv);
+  fv = parseFloat(fv);
 
-
+  let result;
+  if (rate === 0) {
+    result = (pv + fv) / nper;
+  } else {
+    let term = Math.pow(1 + rate, nper);
+    if (type === 1) {
+      result = (fv * rate / (term - 1) + pv * rate / (1 - 1 / term)) / (1 + rate);
+    } else {
+      result = fv * rate / (term - 1) + pv * rate / (1 - 1 / term);
+    }
+  }
+  return -result.toFixed(2);
 }
 
 exports.NPER = function(pvInput,fvLabel,pmtInput,rateInput,option){
