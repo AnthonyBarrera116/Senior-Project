@@ -74,13 +74,24 @@ exports.BP = function(ym, mr, bfv, acr, type) {
   
 };
 
-exports.NPV = function(Invest, rate, yearOne, yearTwo, yearThree, yearFour){
+//Based off of the function from this repo: https://github.com/handsontable/formula.js
+exports.NPV = function(args){
+  // Lookup rate
+  let rate = parseFloat(args[0]);
 
-  return -1;
+  // Initialize net present value
+  let value = 0;
 
+  // Loop on all values
+  for (let j = 1; j < args.length; j++) {
+    value += parseFloat(args[j]) / Math.pow(1 + rate, j);
+  }
 
+  // Return net present value
+  return value.toFixed(2);
 }
 
+//Based off of the function from this repo: https://github.com/handsontable/formula.js
 exports.PMT = function(rate, nper, pv, fv, type){
   fv = fv || 0;
 
@@ -103,11 +114,18 @@ exports.PMT = function(rate, nper, pv, fv, type){
   return -result.toFixed(2);
 }
 
-exports.NPER = function(pvInput,fvLabel,pmtInput,rateInput,option){
+//Based off of the function from this repo: https://github.com/handsontable/formula.js
+exports.NPER = function(rate, pmt, pv, fv, type){
+  fv = fv || 0;
 
-  return -1;
+  rate = parseFloat(rate);
+  pmt = parseFloat(pmt);
+  pv = parseFloat(pv);
+  fv = parseFloat(fv);
 
-
+  let num = pmt * (1 + rate * type) - fv * rate;
+  let den = (pv * rate + pmt * (1 + rate * type));
+  return (Math.log(num / den) / Math.log(1 + rate)).toFixed(2);
 }
 
 exports.YTM = function(nper, pv, rate, pmt, option){

@@ -25,50 +25,28 @@
         <div class="row">
             <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "invesLabel" for="invesInput" style="font-size: 40px; float: left;">Intial invesment:</label>
-                <input type="number" step="0.01" class="form-control" id="invesInput" name="invesInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+                <label id = "rateLabel" for="rateInput" style="font-size: 39px; float: left;">Rate:</label>
+                <input type="number" step="0.000000001" class="form-control" id="rateInput" name="rateInput"></input>
             </div>
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
         </div>
         <div class="row">
             <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "disLabel" for="disInput" style="font-size: 40px; float: left;">Discount Rate:</label>
-                <input type="number" step="0.01" class="form-control" id="disInput" name="disInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+                <label id = "valueLabel1" for="valueInput1" style="font-size: 40px; float: left;">Value 1:</label>
+                <input type="number" step="0.01" class="form-control" id="valueInput1" name="valueInput1"></input>
             </div>
-        </div>
-        <div class="row">
             <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "oneLabel" for="oneInput" style="font-size: 40px; float: left;"> Year 1 :</label>
-                <input type="number" step="0.01" class="form-control" id="oneInput" name="oneInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            </div>
         </div>
+        <div id = "extraValue1"></div>
         <div class="row">
-            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "twoLabel" for="twoInput" style="font-size: 40px; float: left;"> Year 2 :</label>
-                <input type="number" step="0.01" class="form-control" id="twoInput" name="twoInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
+            <div class="col-12 col-xs-1 col-s-1 col-md-4 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <button style = "background-color: #000000; border-style:solid; border-width:5px; border-color:#a349a4; margin-top: 15px; font-size:25px; float: left;" onclick="addValue()">
+                    <a href="javascript:void(0)"> Add a value </a>
+                </button>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "threeLabel" for="threeInput" style="font-size: 40px; float: left;"> Year 3 :</label>
-                <input type="number" step="0.01" class="form-control" id="threeInput" name="threeInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "fourLabel" for="fourInput" style="font-size: 40px; float: left;"> Year 4 :</label>
-                <input type="number" step="0.01" class="form-control" id="fourInput" name="fourInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            </div>
+            <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
         </div>
         
         <div class="row">
@@ -96,27 +74,27 @@
     <script type = "text/javascript">
         let option = 0;
         let display = 0;
+        let values = 1;
         
-        function displayMenu(){
-            if(display === 0){
-                document.getElementById('menu').style.display = "block";
-                display = 1;
-            }else{
-                document.getElementById('menu').style.display = "none";
-                display = 0;
-            }
-
+        function addValue(){
+            let id = `extraValue${values}`;
+            values++;
+            document.getElementById(id).innerHTML = `<div class="row">
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <label id = "valueLabel${values}" for="valueInput${values}" style="font-size: 40px; float: left;">Value ${values}:</label>
+                <input type="number" step="0.01" class="form-control" id="valueInput${values}" name="valueInput${values}"></input>
+            </div>
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+        </div>
+        <div id = "extraValue${values}"></div>`;
         }
         function calculate(){
-            let Invest = document.getElementById("invesInput").value;
-            let rate = document.getElementById("disInput").value;
-            let yearOne = document.getElementById("oneLabel").value;
-            
-            let yearTwo = document.getElementById("twoLabel").value;
-            let yearThree = document.getElementById("threeLabel").value;
-            let yearFour = document.getElementById("fourLabel").value;
-
-            document.getElementById('answer').innerHTML = exports.NPV(Invest, rate, yearOne, yearTwo, yearThree, yearFour);
+            let args = [document.getElementById("rateInput").value];
+            for(let i = 1; i <= values; i++){
+                args.push(document.getElementById(`valueInput${i}`).value);
+            }
+            document.getElementById('answer').innerHTML = exports.NPV(args);
             document.getElementById('answer').style.color = "#ffffff";
         }
     </script>
