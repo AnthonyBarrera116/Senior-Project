@@ -30,3 +30,8 @@ test('Calculate NPER', async function()
 {
     expect(calculations.NPER(0.05, 2000, 0, 7500, 0)).toBe("-4.26");
 });
+
+test('Calculate the annual growth of dividends', async function()
+{
+    expect(calculations.AnnGroDiv(12, 2, 0.12)).toBe(-0.04);
+});

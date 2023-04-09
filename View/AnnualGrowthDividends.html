@@ -16,7 +16,7 @@
         <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
         <div class="col-12 col-xs-0 cold-md-8 col-lg-4">
             <h1 id = "header1" name = "header1" style = "font-size:60px; font-weight: 750; margin-top: 40px; margin-bottom: 40px; border-style:solid; border-width:10px; border-color:#a349a4;">
-                <u>Annual Growth Dividends: </u>
+                <u>Annual Growth of Dividends: </u>
             </h1>
         </div>
         <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
@@ -25,24 +25,24 @@
         <div class="row">
             <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "divLabel" for="divInput" style="font-size: 40px; float: left;">Current Dividened Income:</label>
-                <input type="number" step="0.01" class="form-control" id="divInput" name="divInput"></input>
+                <label id = "stckprcLabel" for="stckprcInput" style="font-size: 40px; float: left;">Current Stock Price:</label>
+                <input type="number" step="0.01" class="form-control" id="stckprcInput" name="stckprcInput"></input>
+            </div>
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <label id = "rcntdivLabel" for="rcntdivInput" style="font-size: 40px; float: left;">Most Recent Dividend:</label>
+                <input type="number" step="0.01" class="form-control" id="rcntdivInput" name="rcntdivInput"></input>
                 <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "rateLabel" for="rateInput" style="font-size: 40px; float: left;">Underlying Growth Rate (%):</label>
-                <input type="number" step="0.01" class="form-control" id="rateInput" name="rateInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "yearsLabel" for="yearsInput" style="font-size: 40px; float: left;"> Number of Years:</label>
-                <input type="number" step="0.01" class="form-control" id="yearsInput" name="yearsInput"></input>
+                <label id = "reqratertrnLabel" for="reqratertrnInput" style="font-size: 40px; float: left;">Required Rate of Return:</label>
+                <input type="number" step="0.01" class="form-control" id="reqratertrnInput" name="reqratertrnInput"></input>
                 <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             </div>
         </div>
@@ -83,10 +83,10 @@
 
         }
         function calculate(){
-            let divInput = document.getElementById("divInput").value;
-            let rateInput = document.getElementById("rateInput").value;
-            let yearsInput = document.getElementById("yearsInput").value;
-            document.getElementById('answer').innerHTML = exports.AnnGroDiv(divInput,rateInput,yearsInput);
+            let stockPrice = document.getElementById("stckprcInput").value;
+            let recentDiv = document.getElementById("rcntdivInput").value;
+            let reqRateReturn = document.getElementById("reqratertrnInput").value;
+            document.getElementById('answer').innerHTML = exports.AnnGroDiv(stockPrice, recentDiv, reqRateReturn);
             document.getElementById('answer').style.color = "#ffffff";
         }
     </script>

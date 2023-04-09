@@ -135,10 +135,13 @@ exports.YTM = function(nper, pv, rate, pmt, option){
 
 }
 
-exports.AnnGroDiv = function(divInput,rateInput,yearsInput){
-
-  return -1;
-
+exports.AnnGroDiv = function(stockPrice, recentDividend, reqRateReturn){
+  
+  stockPrice = parseFloat(stockPrice);
+  recentDividend = parseFloat(recentDividend);
+  reqRateReturn = parseFloat(reqRateReturn);
+  
+  return (recentDividend - stockPrice*reqRateReturn)/(-recentDividend - stockPrice);
 }
 
 exports.AnnGroSt = function(priceInput, faceInput, maturityInput, coupInput, option){
