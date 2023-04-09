@@ -25,43 +25,43 @@
         <div class="row">
             <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <label id = "rateLabel" for="rateInput" style="font-size: 40px; float: left;">Rate:</label>
+                <input type="number" step="0.01" class="form-control" id="rateInput" name="rateInput"></input>
+            </div>
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <label id = "pmtLabel" for="pmtInput" style="font-size: 39px; float: left;">Payment Amount per Period:</label>
+                <input type="number" step="0.01" class="form-control" id="pmtInput" name="pmtInput"></input>
+            </div>
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
                 <label id = "pvLabel" for="pvInput" style="font-size: 40px; float: left;">Present Value:</label>
                 <input type="number" step="0.01" class="form-control" id="pvInput" name="pvInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             </div>
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
         </div>
         <div class="row">
             <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "fvLabel" for="fvInput" style="font-size: 40px; float: left;">Future Value:</label>
+                <label id = "fvLabel" for="fvInput" style="font-size: 40px; float: left;">Future Value (Optional):</label>
                 <input type="number" step="0.01" class="form-control" id="fvInput" name="fvInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             </div>
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
         </div>
         <div class="row">
             <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
             <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "pmtLabel" for="pmtInput" style="font-size: 39px; float: left;">Payments:</label>
-                <input type="number" step="0.01" class="form-control" id="pmtInput" name="pmtInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "rateLabel" for="rateInput" style="font-size: 39px; float: left;">Rate:</label>
-                <input type="number" step="0.01" class="form-control" id="rateInput" name="rateInput"></input>
-                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
-            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
-                <label id = "pmtMadeLabel" for="pmtMade" style="font-size: 40px; float: left;">Payments Start or end of Period:</label>
+                <label id = "pmtMadeLabel" for="pmtMade" style="font-size: 40px; float: left;">When Payments are Made:</label>
                 <div class="dropdownForm" id="pmtMade" name="pmtMade">
-                    <button class="dropbtnForm" id="whenPayment" onclick="displayMenu()" type="button">Start▽</button>
+                    <button class="dropbtnForm" id="whenPayment" onclick="displayMenu()" type="button">At the end of the period ▽</button>
                     <div class="dropdown-contentForm" id="menu" type="button" style = "border-style: solid; border-top-style: none; border-width: 5px; border-color: #a349a4;">
-                        <a href="javascript:void(0)" id="optionwhen" type="button" onclick="switchOption()">End</a>
+                        <a href="javascript:void(0)" id="optionwhen" type="button" onclick="switchOption()">At the beginning of the period</a>
                     </div>
                 </div>
             </div>
@@ -98,14 +98,14 @@
         function switchOption(){
             if(option === 0){
                 option = 1;
-                document.getElementById('whenPayment').innerHTML = "Start▽";
-                document.getElementById('optionwhen').innerHTML = "End";
+                document.getElementById('whenPayment').innerHTML = "At the beginning of the period ▽";
+                document.getElementById('optionwhen').innerHTML = "At the end of the period";
                 document.getElementById('menu').style.display = "none";
                 display = 0;
             }else{
                 option = 0;
-                document.getElementById('whenPayment').innerHTML = "End▽";
-                document.getElementById('optionwhen').innerHTML = "Start";
+                document.getElementById('whenPayment').innerHTML = "At the end of the period ▽";
+                document.getElementById('optionwhen').innerHTML = "At the beginning of the period";
                 document.getElementById('menu').style.display = "none";
                 display = 0;
             }
@@ -121,11 +121,11 @@
 
         }
         function calculate(){
-            let pvInput = document.getElementById("pvInput").value;
-            let fvLabel = document.getElementById("fvLabel").value;
-            let pmtInput = document.getElementById("pmtInput").value;
-            let rateInput = document.getElementById("rateInput").value;
-            document.getElementById('answer').innerHTML = exports.NPER(pvInput,fvLabel,pmtInput,rateInput,option);
+            let rate = document.getElementById("rateInput").value;
+            let pmt = document.getElementById("pmtInput").value;
+            let pv = document.getElementById("pvInput").value;
+            let fv = document.getElementById("fvInput").value;
+            document.getElementById('answer').innerHTML = exports.NPER(rate, pmt, pv, fv, option);
             document.getElementById('answer').style.color = "#ffffff";
         }
     </script>
