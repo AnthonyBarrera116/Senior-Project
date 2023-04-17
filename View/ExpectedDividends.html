@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" /> <!-- charset --> 
+        <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- viewport --> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+        <link href="StyleSheet.css" rel="stylesheet">
+
+        <title>FI320 Calculator</title>
+    </head>
+    <body>
+    <div id="NavBar"></div>
+    <div class="row">
+        <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+        <div class="col-12 col-xs-0 cold-md-8 col-lg-4">
+            <h1 id = "header1" name = "header1" style = "font-size:60px; font-weight: 750; margin-top: 40px; margin-bottom: 40px; border-style:solid; border-width:10px; border-color:#a349a4;">
+                <u>Expected Dividends:</u>
+            </h1>
+        </div>
+        <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+    </div>
+    <form id ="calculationForm" onsubmit="return false;">
+        <div class="row">
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <label id = "rcntdivLabel" for="rcntdivInput" style="font-size: 40px; float: left;">Most Recent Dividend:</label>
+                <input type="number" step="0.01" class="form-control" id="rcntdivInput" name="rcntdivInput"></input>
+            </div>
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <label id = "yearsLabel" for="yearsInput" style="font-size: 40px; float: left;">Years:</label>
+                <div class="dropdownForm" id="yearsInput" name="yearsInput">
+                    <button class="dropbtnForm" id="yearSelect" onclick="displayMenu()" type="button" style="margin-top: 5px;">1 ▽</button>
+                    <div class="dropdown-contentForm" id="menu" type="button" style = "border-style: solid; border-top-style: none; border-width: 5px; border-color: #a349a4;">
+                        <a href="javascript:void(0)" id="1" type="button" onclick="switchOption(1)" style="display:none;">1</a>
+                        <a href="javascript:void(0)" id="2" type="button" onclick="switchOption(2)">2</a>
+                        <a href="javascript:void(0)" id="3" type="button" onclick="switchOption(3)">3</a>
+                        <a href="javascript:void(0)" id="4" type="button" onclick="switchOption(4)">4</a>
+                        <a href="javascript:void(0)" id="5" type="button" onclick="switchOption(5)">5</a>
+                        <a href="javascript:void(0)" id="6" type="button" onclick="switchOption(6)">6</a>
+                        <a href="javascript:void(0)" id="7" type="button" onclick="switchOption(7)">7</a>
+                        <a href="javascript:void(0)" id="8" type="button" onclick="switchOption(8)">8</a>
+                        <a href="javascript:void(0)" id="9" type="button" onclick="switchOption(9)">9</a>
+                        <a href="javascript:void(0)" id="10" type="button" onclick="switchOption(10)">10</a>
+                    </div>
+                </div>
+                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            </div>
+        </div>
+        <div id="growthYears">
+            <div class="row">
+                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+                <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                    <label id = "growth1Label" for="growth1Input" style="font-size: 40px; float: left;">Growth for Year 1:</label>
+                    <input type="number" step="0.01" class="form-control" id="growth1Input" name="growth1Input"></input>
+                </div>
+                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
+            <div class="col-12 col-xs-1 col-s-1 col-md-4 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                <button style = "background-color: #000000; border-style:solid; border-width:10px; border-color:#a349a4; border-radius: 20% ; margin-top: 30px; font-size:50px;" onclick="calculate()">
+                    <a href="javascript:void(0)"> Calculate! </a>
+                </button>
+            </div>
+            <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
+        <div class="col-12 col-xs-1 col-s-1 col-md-4 col-lg-4" style = "font-size:25px; font-weight: 750;">
+            <label id = "answerLabel" for="answer" style="font-size: 40px; float: left;">Answer:<br></label>
+            <p style="border-style:solid; border-width:10px; border-color:#a349a4; margin-top: 60px; color:#000000; text-align: left;" class="answer" name="answer" id="answer">Easter Egg</p>
+        </div>
+        <div class="col-12 col-xs-1 col-s-1 col-lg-4"></div>
+    </div>
+
+    <script type = "text/javascript" src = NavBar.js></script>
+    <script>let exports = {};</script>
+    <script type = "text/javascript" src = Calculations.js></script>
+    <script type = "text/javascript">
+        let option = 1;
+        let display = 0;
+        
+        function displayMenu(){
+            if(display === 0){
+                document.getElementById('menu').style.display = "block";
+                display = 1;
+            }else{
+                document.getElementById('menu').style.display = "none";
+                display = 0;
+            }
+
+        }
+
+        function displayGrowth(years){
+            let yearInputs = "";
+            for(let i = 1; i <= years; i++){
+                yearInputs += `<div class="row">
+                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+                <div class="col-12 col-xs-12 col-md-12 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                    <label id = "growth${i}Label" for="growth${i}Input" style="font-size: 40px; float: left;">Growth for Year ${i}:</label>
+                    <input type="number" step="0.01" class="form-control" id="growth${i}Input" name="growth${i}Input"></input>
+                </div>
+                <div class="col-12 col-xs-0 cold-md-2 col-lg-4"></div>
+            </div>`;
+            }
+            document.getElementById('growthYears').innerHTML = yearInputs;
+        }
+        function switchOption(input){
+            document.getElementById('yearSelect').innerHTML = input + " ▽";
+            document.getElementById(input.toString()).style.display = "none";
+            document.getElementById(option.toString()).style.display = "block";
+            option = input;
+            displayMenu();
+            displayGrowth(input)
+        }
+        function calculate(){
+            let args = [document.getElementById("rcntdivInput").value];
+            for(let i = 1; i <= option; i++){
+                args.push(document.getElementById("growth" + i + "Input").value);
+            }
+            console.log(args);
+            document.getElementById('answer').innerHTML = exports.expectedDividends(args);
+            document.getElementById('answer').style.color = "#ffffff";
+        }
+    </script>
+    </body>
+</html>
