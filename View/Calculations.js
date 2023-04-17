@@ -144,6 +144,15 @@ exports.AnnGroDiv = function(stockPrice, recentDividend, reqRateReturn){
   return (recentDividend - stockPrice*reqRateReturn)/(-recentDividend - stockPrice);
 }
 
+exports.expectedDividends = function(args){//[recent div, growth1, growth2, ...]
+  //let recentDiv = parseFloat(args[0]);
+  let dividends = [parseFloat(args[0])*(1 + parseFloat(args[1]))];
+  for(let i = 2; i < args.length; i++){
+    dividends.push(" " + (dividends[i - 2]*(1 + parseFloat(args[i]))).toFixed(2));
+  }
+  return dividends.toString();
+}
+
 exports.AnnGroSt = function(priceInput, faceInput, maturityInput, coupInput, option){
 
   return -1;
