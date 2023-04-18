@@ -1,7 +1,7 @@
 const dao = require('../Model/UserDAO');
 const passUtil = require('../util/Password');
 
-exports.postCreateOrUpdate = async function(req,res){
+exports.postCreate = async function(req,res){
 
     let newuser = {}; //empty obj
     newuser.Email = req.body.emailUser;
@@ -19,7 +19,7 @@ exports.postCreateOrUpdate = async function(req,res){
     }
     
 
-    catch{ //incorrect login or password
+    catch{ 
 
         dao.create(newuser);    
        
@@ -56,10 +56,10 @@ exports.logout = function(req, res){
     res.redirect('about.html');
 }
 
-exports.getHistory = function(req,res){ //REST get (one) method
+exports.getHistory = async function(req,res){ //REST get (one) method
     //URL parameter always on req.params.<name>
-    let id = req.params.id; //get param and convert to int
-    let found = dao.read(id);
+    let id = req.params.Email; //get param and convert to int
+    let found = await dao.find(id);
 
     if(found !== null){ //We found the requested user
         res.status(200); //200 = OK
@@ -70,4 +70,24 @@ exports.getHistory = function(req,res){ //REST get (one) method
         res.send({msg:'User not found.'}); //send a message
     }
     res.end(); //ends the response (only 1 end per response)
+}
+
+exports.postHis = function(req,res){
+
+    console.log(req.session.user);
+
+    user = {
+
+        Email: req.body.user.Email,
+        history:req.body.user.history
+
+    }
+
+    req.session.user = dao.update(user);
+
+    console.log(dao.update(user));
+
+    res.status(200).json({ success: true});
+    return req.session.user;
+
 }

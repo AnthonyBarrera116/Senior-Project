@@ -41,3 +41,8 @@ exports.find = async function(em){
 exports.deleteAll = async function(){
     await userModel.deleteMany();
 }
+
+exports.update = async function(user){
+    let userr = await userModel.updateOne({Email: user.Email},{$set:{history: user.history}});
+    return userr;
+}

@@ -85,7 +85,7 @@
             }
 
         }
-        function calculate(){
+        async function calculate(){
             let NPVInput = document.getElementById("NPVInput").value;
             let perInput = document.getElementById("perInput").value;
             
@@ -93,6 +93,54 @@
 
             document.getElementById('answer').innerHTML = exports.EAA(NPVInput, perInput, rateInput);
             document.getElementById('answer').style.color = "#ffffff";
+
+            let response = await fetch('http://localhost:4000/loggedUser');
+
+            let data = ["10",exports.EAA(NPVInput, perInput, rateInput)]
+
+            try{
+                 users = await response.json();
+
+                 let user = {
+
+                    Email: users.Email,
+                    history: [data]
+
+                    }
+
+                if (response != null) {
+
+                        await fetch('/postHis', {
+                            method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                            body: JSON.stringify({user :{
+
+                                Email: users.Email,
+                                history: [data]
+
+                                }})
+                        })
+
+                        .catch(error => {
+                            console.error('Error sending POST request:', error);
+                        });
+                }
+                else{
+
+                    console.log("No account");
+
+                }
+
+           
+            }
+            catch{
+
+                console.log("Failed");
+
+            }
+
         }
     </script>
     </body>

@@ -119,13 +119,68 @@
             }
 
         }
-        function calculate(){
+        async function calculate(){
              let rate = document.getElementById("rateInput").value;
             let nper = document.getElementById("nperInput").value;
             let pmt = document.getElementById("pmtInput").value;
             let pv = document.getElementById("pvInput").value;
             document.getElementById('answer').innerHTML = exports.FV(rate, nper, pmt, pv, option);
             document.getElementById('answer').style.color = "#ffffff";
+
+            let response = await fetch('http://localhost:4000/loggedUser');
+
+            let data = ["1", exports.FV(rate, nper, pmt, pv, option)]
+
+            try{
+                 users = await response.json();
+
+                 let user = {
+
+                    Email: users.Email,
+                    history: [data]
+
+                    }
+
+                if (response != null) {
+
+                        fetch('/postHis', {
+                            method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                            body: JSON.stringify({user :{
+
+                                Email: users.Email,
+                                history: [data]
+
+                                }})
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                            console.log('POST request successful');
+                            
+                            } 
+                            else {
+                            console.error('POST request failed');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error sending POST request:', error);
+                        });
+                }
+                else{
+
+                    console.log("No account");
+
+                }
+
+           
+            }
+            catch{
+
+                console.log("Failed");
+
+            }
         }
     </script>
     </body>

@@ -111,7 +111,7 @@
             }
 
         }
-        function calculate(){
+        async function calculate(){
             let priceInput = document.getElementById("priceInput").value;
             let faceInput = document.getElementById("faceInput").value;
             let maturityInput = document.getElementById("maturityInput").value;
@@ -119,6 +119,54 @@
 
             document.getElementById('answer').innerHTML = exports.YTM(priceInput, faceInput, maturityInput, coupInput, option);
             document.getElementById('answer').style.color = "#ffffff";
+
+             let response = await fetch('http://localhost:4000/loggedUser');
+
+            let data = ["11",exports.YTM(priceInput, faceInput, maturityInput, coupInput, option)]
+
+            try{
+                 users = await response.json();
+
+                 let user = {
+
+                    Email: users.Email,
+                    history: [data]
+
+                    }
+
+                if (response != null) {
+
+                        await fetch('/postHis', {
+                            method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                            body: JSON.stringify({user :{
+
+                                Email: users.Email,
+                                history: [data]
+
+                                }})
+                        })
+
+                        .catch(error => {
+                            console.error('Error sending POST request:', error);
+                        });
+                }
+                else{
+
+                    console.log("No account");
+
+                }
+
+           
+            }
+            catch{
+
+                console.log("Failed");
+
+            }
+
         }
     </script>
     </body>

@@ -15,9 +15,7 @@
     <div class="row">
         <div class="col-12 col-xs-0 cold-md-2 col-lg-0"></div>
         <div class="col-12 col-xs-0 cold-md-8 col-lg-12">
-            <h1 style = "color: #ffffff; font-size:70px; font-weight: 750; margin-top: 40px; margin-bottom: 40px; margin-right: 40px; margin-left: 40px; border-style: solid; border-color:#a349a4; border-width:10px;">
-                profile
-            </h1>
+            
         </div>
         <div class="col-12 col-xs-0 cold-md-2 col-lg-0"></div>
     </div>
@@ -27,17 +25,18 @@
         
             <div class="col-12 col-xs-0 cold-md-2 col-lg-0"></div>
             <div class="col-12 col-xs-0 cold-md-8 col-lg-12">   
-                <button style="background-color: #a349a4;color: rgb(255, 255, 255);height: 50px; width: 200px; margin-top: 10px;">
-                    <a href="history.html" onclick=""> History </a>
-                </button>
+                <div class="col-12 col-xs-1 col-s-1 col-md-4 col-lg-4" style = "font-size:25px; font-weight: 750;">
+                    
+                    <label id = "pageLabel" for="page" style="font-size: 40px; float: left;">Page:<br></label>
+                    <p style="border-style:solid; border-width:10px; border-color:#a349a4; margin-top: 60px; color:#000000; text-align: left;" class="page" name="page" id="page">Easter Egg</p>
 
-                <form id ="logout"method="get"action="/logout">    
+                    <label id = "answerLabel" for="answer" style="font-size: 40px; float: left;">Answer:<br></label>
+                    <p style="border-style:solid; border-width:10px; border-color:#a349a4; margin-top: 60px; color:#000000; text-align: left;" class="answer" name="answer" id="answer">Easter Egg</p>
+                </div>  
                     <button style="background-color: #a349a4;color: rgb(255, 255, 255);height: 50px; width: 200px; margin-top: 10px;">
-                        <a href="About.html" onclick=""> log out </a>
+                        <a href="profile.html" onclick=""> Go back </a>
                     </button>
-                </form>
             </div>
-            
         <div class="col-12 col-xs-0 cold-md-2 col-lg-0"></div>
         
         </div>
@@ -49,7 +48,7 @@
         
     </script>
 
-    <script>
+<script>
 
     async function his(){
 
@@ -88,6 +87,7 @@
         }
     }      
 
+    his();
 
     </script>
     </body>

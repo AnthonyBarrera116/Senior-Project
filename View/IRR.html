@@ -107,7 +107,7 @@
             }
 
         }
-        function calculate(){
+        async function calculate(){
             let Invest = document.getElementById("invesInput").value;
             let years = document.getElementById("yearsInput").value;
             let yearOne = document.getElementById("oneLabel").value;
@@ -118,6 +118,53 @@
 
             document.getElementById('answer').innerHTML = exports.NPV(Invest, years, yearOne, yearTwo, yearThree, yearFour);
             document.getElementById('answer').style.color = "#ffffff";
+
+            let response = await fetch('http://localhost:4000/loggedUser');
+
+            let data = ["13",exports.NPV(Invest, years, yearOne, yearTwo, yearThree, yearFour)]
+
+            try{
+                 users = await response.json();
+
+                 let user = {
+
+                    Email: users.Email,
+                    history: [data]
+
+                    }
+
+                if (response != null) {
+
+                        await fetch('/postHis', {
+                            method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                            body: JSON.stringify({user :{
+
+                                Email: users.Email,
+                                history: [data]
+
+                                }})
+                        })
+
+                        .catch(error => {
+                            console.error('Error sending POST request:', error);
+                        });
+                }
+                else{
+
+                    console.log("No account");
+
+                }
+
+           
+            }
+            catch{
+
+                console.log("Failed");
+
+            }
         }
     </script>
     </body>

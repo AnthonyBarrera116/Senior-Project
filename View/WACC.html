@@ -100,7 +100,7 @@
             }
 
         }
-        function calculate(){
+        async function calculate(){
             let invesInput = document.getElementById("invesInput").value;
             let totalInput = document.getElementById("totalInput").value;
             let costInput = document.getElementById("costInput").value;
@@ -110,6 +110,52 @@
 
             document.getElementById('answer').innerHTML = exports.WACC(invesInput, totalInput, costInput, debtInput, rateInput);
             document.getElementById('answer').style.color = "#ffffff";
+             let response = await fetch('http://localhost:4000/loggedUser');
+
+            let data = ["14",exports.WACC(invesInput, totalInput, costInput, debtInput, rateInput)]
+
+            try{
+                 users = await response.json();
+
+                 let user = {
+
+                    Email: users.Email,
+                    history: [data]
+
+                    }
+
+                if (response != null) {
+
+                        await fetch('/postHis', {
+                            method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                            body: JSON.stringify({user :{
+
+                                Email: users.Email,
+                                history: [data]
+
+                                }})
+                        })
+
+                        .catch(error => {
+                            console.error('Error sending POST request:', error);
+                        });
+                }
+                else{
+
+                    console.log("No account");
+
+                }
+
+           
+            }
+            catch{
+
+                console.log("Failed");
+
+            }
         }
     </script>
     </body>
