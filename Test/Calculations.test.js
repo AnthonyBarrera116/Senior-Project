@@ -35,3 +35,13 @@ test('Calculate the annual growth of dividends', async function()
 {
     expect(calculations.AnnGroDiv(12, 2, 0.12)).toBe(-0.04);
 });
+
+test('Calculate expected dividends', async function()
+{
+    expect(calculations.expectedDividends([1, 0.2, 0.2, 0.2, 0.2, 0.05])).toBe("1.2, 1.44, 1.73, 2.08, 2.18");
+});
+
+test('Calculate stock price', async function()
+{
+    expect(calculations.PSP(2.18, 0.1, 0.05)).toBe("43.60");
+});
