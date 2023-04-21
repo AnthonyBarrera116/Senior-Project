@@ -178,17 +178,20 @@ exports.EAA = function(NPV, nper, rate){
 
 }
 
-exports.CAPM = function(expInput, rateInput, stockInput){
+exports.CAPM = function(exp, rate, beta){
 
-  return -1;
+  exp = parseFloat(exp);
+  rate = parseFloat(rate);
+  beta = parseFloat(beta);
+
+  return (rate + beta*(exp - rate)).toFixed(2);
 
 }
 
-exports.IRR = function(args){
+exports.IRR = function(args){//Based off of this function: https://stackoverflow.com/a/19560212
   min = 0.0;
   max = 1.0;
-  let time = new Date();
-  let start = time.getSeconds();
+  let start = (new Date()).getSeconds();
   do {
     guest = (min + max) / 2;
     NPV = 0;
@@ -201,7 +204,7 @@ exports.IRR = function(args){
     else {
       max = guest;
     }
-    if(((new Date()).getSeconds() - start) > 5){
+    if(((new Date()).getSeconds() - start) > 5){//Stop if the loop runs for more than 5 seconds
       return NaN;
     }
   } while(Math.abs(NPV) > 0.000001);

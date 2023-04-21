@@ -55,3 +55,8 @@ test('Calculate EAA', async function()
 {
     expect(calculations.EAA(-42539.44, 3, 0.1)).toBe("-17105.74");
 });
+
+test('Calculate CAPM', async function()
+{
+    expect(calculations.CAPM(0.1252, 0.0381, 0.71)).toBe("0.10");
+});
