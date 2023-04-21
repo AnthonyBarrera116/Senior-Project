@@ -50,3 +50,8 @@ test('Calculate IRR', async function()
 {
     expect(calculations.IRR([-794.99, 40, 40, 40, 40, 40, 40, 40, 840])).toBe("5.10");
 });
+
+test('Calculate EAA', async function()
+{
+    expect(calculations.EAA(-42539.44, 3, 0.1)).toBe("-17105.74");
+});

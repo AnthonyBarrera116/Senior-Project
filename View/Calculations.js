@@ -128,13 +128,6 @@ exports.NPER = function(rate, pmt, pv, fv, type){
   return (Math.log(num / den) / Math.log(1 + rate)).toFixed(2);
 }
 
-exports.YTM = function(args){
-
-  return exports.IRR(args);
-
-
-}
-
 exports.AnnGroDiv = function(stockPrice, recentDividend, reqRateReturn){
   
   stockPrice = parseFloat(stockPrice);
@@ -176,9 +169,12 @@ exports.WACC = function(invesInput, totalInput, costInput, debtInput, rateInput)
 
 }
 
-exports.EAA = function(NPVInput, perInput, rateInput){
+exports.EAA = function(NPV, nper, rate){
+  NPV = parseFloat(NPV);
+  nper = parseFloat(nper);
+  rate = parseFloat(rate);
 
-  return -1;
+  return (NPV/((1 - (1/Math.pow(1 + rate, nper)))/rate)).toFixed(2);
 
 }
 
