@@ -45,3 +45,8 @@ test('Calculate stock price', async function()
 {
     expect(calculations.PSP(2.18, 0.1, 0.05)).toBe("43.60");
 });
+
+test('Calculate IRR', async function()
+{
+    expect(calculations.IRR([-794.99, 40, 40, 40, 40, 40, 40, 40, 840])).toBe("5.10");
+});

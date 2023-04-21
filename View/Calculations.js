@@ -128,9 +128,9 @@ exports.NPER = function(rate, pmt, pv, fv, type){
   return (Math.log(num / den) / Math.log(1 + rate)).toFixed(2);
 }
 
-exports.YTM = function(nper, pv, rate, pmt, option){
+exports.YTM = function(args){
 
-  return -1;
+  return exports.IRR(args);
 
 
 }
@@ -186,4 +186,28 @@ exports.CAPM = function(expInput, rateInput, stockInput){
 
   return -1;
 
+}
+
+exports.IRR = function(args){
+  min = 0.0;
+  max = 1.0;
+  let time = new Date();
+  let start = time.getSeconds();
+  do {
+    guest = (min + max) / 2;
+    NPV = 0;
+    for (var j=0; j<args.length; j++) {
+          NPV += args[j]/Math.pow((1+guest),j);
+    }
+    if (NPV > 0) {
+      min = guest;
+    }
+    else {
+      max = guest;
+    }
+    if(((new Date()).getSeconds() - start) > 5){
+      return NaN;
+    }
+  } while(Math.abs(NPV) > 0.000001);
+  return (guest * 100).toFixed(2);
 }
