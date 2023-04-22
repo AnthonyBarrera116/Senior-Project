@@ -163,9 +163,19 @@ exports.FSP = function(numPInput, pvInput, rateInput, pmtInput,option){
 
 }
 
-exports.WACC = function(invesInput, totalInput, costInput, debtInput, rateInput){
+exports.WACC = function(equityCost, equityAmt, debtCost, debtAmt, rate){
 
-  return -1;
+  equityCost = parseFloat(equityCost);
+  equityAmt = parseFloat(equityAmt);
+  debtCost = parseFloat(debtCost);
+  debtAmt = parseFloat(debtAmt);
+  rate = parseFloat(rate);
+
+  let total = equityAmt + debtAmt;
+  let debtWeight = debtAmt/total;
+  let equityWeight = equityAmt/total;
+
+  return (debtCost*(1 - rate)*debtWeight + equityCost*equityWeight).toFixed(2);
 
 }
 

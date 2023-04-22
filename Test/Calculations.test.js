@@ -60,3 +60,8 @@ test('Calculate CAPM', async function()
 {
     expect(calculations.CAPM(0.1252, 0.0381, 0.71)).toBe("0.10");
 });
+
+test('Calculate WACC', async function()
+{
+    expect(calculations.WACC(0.165, 15000000, 0.08, 6000000, 0.21)).toBe("0.14");
+});
