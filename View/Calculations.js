@@ -220,3 +220,12 @@ exports.IRR = function(args){//Based off of this function: https://stackoverflow
   } while(Math.abs(NPV) > 0.000001);
   return (guest * 100).toFixed(2);
 }
+
+exports.carPayments = function(price, down, term, rate){
+  down = parseFloat(down);
+  price = parseFloat(price) - down;
+  term = parseFloat(term);
+  rate = parseFloat(rate);
+
+  return ((price + price*rate)/(term * 12)).toFixed(2);
+}

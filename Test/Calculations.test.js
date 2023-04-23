@@ -65,3 +65,8 @@ test('Calculate WACC', async function()
 {
     expect(calculations.WACC(0.165, 15000000, 0.08, 6000000, 0.21)).toBe("0.14");
 });
+
+test('Calculate Car Payments', async function()
+{
+    expect(calculations.carPayments(48000, 18720, 6, 0.1133)).toBe("452.74");
+});
