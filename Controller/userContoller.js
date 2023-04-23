@@ -73,9 +73,6 @@ exports.getHistory = async function(req,res){ //REST get (one) method
 }
 
 exports.postHis = function(req,res){
-
-    console.log(req.session.user);
-
     user = {
 
         Email: req.body.user.Email,
@@ -84,8 +81,6 @@ exports.postHis = function(req,res){
     }
 
     req.session.user = dao.update(user);
-
-    console.log(dao.update(user));
 
     res.status(200).json({ success: true});
     return req.session.user;

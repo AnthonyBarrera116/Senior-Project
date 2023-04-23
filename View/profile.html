@@ -51,43 +51,7 @@
 
     <script>
 
-    async function his(){
-
-        
-        const pages = ["PV","FV","PMT","NPER","NPV","Annual Growth of Divends", "Annual Growth of Stock", "Expected Dividends","Present Stock Price", "Future Stock Price", "Price of a Bond", "Yeild to Maturity", "Anuual Annuity",
-         "Internal Rate of Return", "Average cost of capital","Capital Asset Pricing","Car Payments", "Amortization"];
-         
-        let response = await fetch('http://localhost:4000/loggedUser');
-        
-        
-
-        try{
-        
-            users = await response.json();
-
-            console.log(users.history);
-            if (response != null) {
-        
-
-                //document.getElementById('pageLabel').innerHTML = pages[users.history[0][0]];
-                document.getElementById('page').innerHTML = pages[users.history[0][0]];
-                document.getElementById('page').style.color = "#ffffff";
-                document.getElementById('answer').innerHTML = users.history[0][1];
-                document.getElementById('answer').style.color = "#ffffff";
-                
-                //document.getElementById('answerLabel').innerHTML = users.history[0][1];
-            }
-
-        }
-        catch{
-
-            
-            document.getElementById('page').innerHTML = "None";
-                
-            document.getElementById('answer').innerHTML = "None";
-        }
-    }      
-
+   
 
     </script>
     </body>

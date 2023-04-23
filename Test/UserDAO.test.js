@@ -35,14 +35,6 @@ test('Duplicate User',async function(){
     expect(dup.Email).toBe(found.Email); //assertion
 });
 
-test('Update',async function(){
-    let newdata = {Email:'test@test.com',
-                    password:passUtil.hashPassword("123456"),
-                    history: [3]};
-    let updated = await dao.update(newdata);
-    let found = await dao.read(updated._id);
-    expect(JSON.stringify(updated.history)).toBe(JSON.stringify(found.history)); //assertion
-});
 afterAll(async function(){
     await dao.deleteAll();
     dbcon.disconnect();

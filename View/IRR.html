@@ -123,7 +123,7 @@
 
             let response = await fetch('http://localhost:4000/loggedUser');
 
-            let data = ["13",exports.NPV(Invest, years, yearOne, yearTwo, yearThree, yearFour)]
+            let data = ["11", exports.IRR(args)]
 
             try{
                  users = await response.json();
